@@ -1,11 +1,14 @@
+// Decorator Factory
 export function AutoUnsubscribe(): ClassDecorator {
-
+  // Decorator Function
   return (target): void => {
 
     const destroyOriginal = target.prototype.ngOnDestroy;
 
+    // override original ngOnDestroy
     target.prototype.ngOnDestroy = function(): void {
 
+      // Procura por propriedades que receberam assinatura de um observable
       for (const prop of Object.keys(this)) {
         const property = this[prop];
         if (property && (typeof property.unsubscribe === 'function')) {

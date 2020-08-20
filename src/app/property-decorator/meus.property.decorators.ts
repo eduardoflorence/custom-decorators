@@ -1,22 +1,24 @@
-export function Storage(key: string): PropertyDecorator {
+// Decorator Factory
+export function Storage(keyStorage: string): PropertyDecorator {
+  // Decorator Function
   return (target: any, propertyName: string) => {
 
     let value = target[propertyName];
 
     const getter = () => {
-      console.log(value);
-      if (value) {
+      if (!(value === null || value === undefined)) {
         return value;
       }
-      value = localStorage.getItem(key);
+      value = localStorage.getItem(keyStorage);
       return value;
     };
 
     const setter = (newValue) => {
       value = newValue;
-      localStorage.setItem(key, newValue);
+      localStorage.setItem(keyStorage, newValue);
     };
 
+    // override property definition
     Object.defineProperty(target, propertyName, {
       get: getter,
       set: setter,

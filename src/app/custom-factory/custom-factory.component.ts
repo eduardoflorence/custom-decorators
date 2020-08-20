@@ -1,13 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 
 /*
+  // Decorator Function
   export function log(target: any): void {
     console.log(target);
   }
 */
 
+// Decorator Factory
 export function log(color: string = 'red'): ClassDecorator {
-
+  // Decorator Function
   return (target: any): void => {
     console.log(`%c ${target}`, `color: ${color}; font-weight: bold; font-size: 18px`);
   };

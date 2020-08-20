@@ -1,11 +1,14 @@
 import { Subject, Observable, of } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
+// Decorator Factory
 export function Timeout(milissegundos: number): MethodDecorator {
+  // Decorator Function
   return (target: any, key: string, descriptor: PropertyDescriptor) => {
 
     const originalMethod = descriptor.value;
 
+    // override original method
     descriptor.value = function(...args: any[]): void {
       setTimeout(() => {
         originalMethod.apply(this, args);
