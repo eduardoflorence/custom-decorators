@@ -34,7 +34,7 @@ export function Validate(): MethodDecorator {
         }
       });
 
-      originalMethod.apply(this, args);
+      return originalMethod.apply(this, args);
     };
 
     return descriptor;
