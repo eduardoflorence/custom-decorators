@@ -10,7 +10,7 @@ export function log(target: any): void {
   templateUrl: './hello-world.component.html',
   styleUrls: ['./hello-world.component.scss']
 })
-@log 
+@log
 export class HelloWorldComponent implements OnInit {
 
   constructor() { }
